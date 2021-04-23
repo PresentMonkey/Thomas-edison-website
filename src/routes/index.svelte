@@ -37,10 +37,10 @@
 </style>
 
 <svelte:head>
-	<title>Virtual Box</title>
+	<title>Virtual Star Chart</title>
 </svelte:head>
 
-<h1>Virtual Box</h1>
+<h1>Virtual Star Chart</h1>
 
 
 <p><strong>Login to create a classroom or click <a href="/join">join</a> to join an existing classroom</strong></p>
