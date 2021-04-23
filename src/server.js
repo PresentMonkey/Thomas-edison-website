@@ -63,7 +63,7 @@ io(server).on('connection', (socket)=>{
 		
 	}
 
-	setInterval(updateData, 2000);
+	setInterval(updateData, 5000);
 
 
 	console.log('A user connected');
