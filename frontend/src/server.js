@@ -34,9 +34,10 @@ io(server).on('connection', (socket)=>{
 		var id = socket.id;
 		if(data.code == code){
 			let user = {name: data.name}
-			users.push(user);
+			users.push({id: socket.id, name: data.name, stars: 0});
 			console.log(users);
 			socket.emit('join_response', {success: true, err: null});
+			updateData();
 		}
 		else{
 			socket.emit('join_response', {success: false, err: 'No such code exists'});
@@ -44,9 +45,25 @@ io(server).on('connection', (socket)=>{
 
 		
 	})
-	socket.on('disconnect', (reason)=>{
-		
+	socket.on('fetchStudents', ()=>{
+		updateData();
 	})
+	socket.on('give_star', (data)=>{
+		console.log(data);
+		socket.to(data).emit('gived_star');
+	})
+
+
+	socket.on('disconnect', (reason)=>{
+		//delete users[socket.id];
+		updateData();
+	})
+	function updateData(){
+		socket.emit('studentData', {users});
+		
+	}
+
+	setInterval(updateData, 2000);
 
 
 	console.log('A user connected');
