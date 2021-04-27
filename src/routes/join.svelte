@@ -80,7 +80,7 @@
     })
 
     function connect(){
-
+        arduino.openPort();
     }
 
     
